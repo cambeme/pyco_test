@@ -1,0 +1,15 @@
+$breakpoints: (
+    sm: 20em,
+    md: 34em,
+    lg: 60em
+);
+
+@mixin bp($screen-size) {
+    @if map-has-key($breakpoints, $screen-size) {
+        @media (min-width: map-get($breakpoints, $screen-size)) {
+            @content;
+        }
+    } @else {
+        @warn "'#{$screen-size}' doesn't have breakpoint.";
+    }
+}
